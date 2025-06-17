@@ -1,0 +1,9 @@
+.venv/
+.vscode/
+*.pyc
+*.pyo
+*.cer
+*.key
+*.pem
+*.db
+flask_session/

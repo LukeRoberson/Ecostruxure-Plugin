@@ -1,0 +1,28 @@
+# Definitions to parse alarm events from EcoStruxure webhooks
+#
+# Events are one of:
+# - Activated: A new alarm has been activated.
+# - Updated: An existing alarm has been updated.
+# - Cleared: An existing alarm has been cleared.
+#
+# Definitions below contain:
+# - description: A short description of the event. This is used for documentation purposes.
+# - message: A message template that will be used to format the event message.
+# - teams: Optional message template for Microsoft Teams notifications. If not provided, the other message will be used.
+
+
+ALARM_ACTIVATION_LABEL_Activated:
+  description: "A test activation event for EcoStruxure webhooks."
+  message: "{self.severity}: {self.device_label} has activated an {self.activ_label} alarm: {self.activ_message}."
+
+ALARM_UPDATE_LABEL_Updated:
+  description: "A test update event for EcoStruxure webhooks."
+  message: "{self.severity}: {self.device_label} has an {self.updated_label} update: {self.updated_message}."
+
+ALARM_CLEARED_LABEL_Cleared:
+  description: "A test clear event for EcoStruxure webhooks."
+  message: "{self.device_label} has cleared an alarm: {self.activ_label}."
+
+default:
+  description: "A default event for EcoStruxure webhooks."
+  message: "An unknown event has been received from EcoStruxure."

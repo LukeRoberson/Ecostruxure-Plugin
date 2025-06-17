@@ -1,0 +1,254 @@
+openapi: 3.0.3
+
+info:
+  title: webhook
+  version: 0.0.0
+  description: EcoStruxure IT Expert Webhook API
+  contact:
+    url: 'https://community.se.com/t5/EcoStruxure-IT-Help-Center/ct-p/ecostruxure-it-help-center'
+    email: 'https://app.ecostruxureit.com/request/'
+paths: { }
+x-webhooks:
+  alarm:
+    post:
+      operationId: alarm
+      parameters:
+        - $ref: '#/components/parameters/hook-id'
+        - $ref: '#/components/parameters/api-version'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookAlarms'
+      responses:
+        '200':
+          description: Return a 200 status to indicate that the data was received successfully.
+components:
+  parameters:
+    hook-id:
+      name: X-ESITExpert-Delivery
+      description: The unique identifier of the event.
+      in: header
+      required: true
+      example: 00000000-0000-0000-0000-000000000000
+      schema:
+        type: string
+    api-version:
+      name: X-ESITExpert-Api-Version
+      description: API version specified for the delivery.
+      in: header
+      required: true
+      example: 0.0.0
+      schema:
+        type: string
+  schemas:
+    Alarm:
+      type: object
+      required:
+        - id
+        - activation_info
+        - status_info
+      properties:
+        id:
+          $ref: '#/components/schemas/AlarmId'
+        activation_info:
+          $ref: '#/components/schemas/AlarmActivationInfo'
+        status_info:
+          anyOf:
+            - $ref: '#/components/schemas/UnresolvedAlarm'
+            - $ref: '#/components/schemas/UpdatedAlarm'
+            - $ref: '#/components/schemas/ClearedAlarm'
+    AlarmActivationInfo:
+      type: object
+      required:
+        - activated_at
+        - label
+        - message
+        - severity
+      properties:
+        activated_at:
+          type: string
+          format: date-time
+        label:
+          $ref: '#/components/schemas/AlarmLabel'
+        message:
+          $ref: '#/components/schemas/AlarmMessage'
+        severity:
+          $ref: '#/components/schemas/AlarmSeverity'
+    AlarmId:
+      type: string
+      format: uuid
+    AlarmLabel:
+      type: string
+    AlarmMessage:
+      type: string
+    AlarmSeverity:
+      type: string
+    ClearedAlarm:
+      type: object
+      required:
+        - cleared_at
+        - label
+        - message
+        - peak_severity
+      properties:
+        cleared_at:
+          type: string
+          format: date-time
+        label:
+          $ref: '#/components/schemas/AlarmLabel'
+        message:
+          $ref: '#/components/schemas/AlarmMessage'
+        peak_severity:
+          $ref: '#/components/schemas/AlarmSeverity'
+    Device:
+      type: object
+      required:
+        - id
+        - device_type
+        - device_model
+      properties:
+        id:
+          $ref: '#/components/schemas/DeviceId'
+        device_type:
+          $ref: '#/components/schemas/DeviceType'
+        device_model:
+          $ref: '#/components/schemas/DeviceModel'
+    DeviceAlarms:
+      type: object
+      required:
+        - device_id
+        - alarm_ids
+      properties:
+        device_id:
+          $ref: '#/components/schemas/DeviceId'
+        alarm_ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlarmId'
+    DeviceConfig:
+      type: object
+      required:
+        - device_id
+        - device_config_properties
+      properties:
+        device_id:
+          $ref: '#/components/schemas/DeviceId'
+        device_config_properties:
+          type: array
+          items:
+            anyOf:
+              - $ref: '#/components/schemas/DeviceLabel'
+              - $ref: '#/components/schemas/IPv4Address'
+    DeviceId:
+      type: string
+      format: uuid
+    DeviceLabel:
+      type: string
+    DeviceLocations:
+      type: object
+      required:
+        - device_id
+        - location_id
+      properties:
+        device_id:
+          $ref: '#/components/schemas/DeviceId'
+        location_id:
+          $ref: '#/components/schemas/LocationId'
+    DeviceModel:
+      type: string
+    DeviceType:
+      type: string
+    IPv4Address:
+      type: string
+      format: ipv4
+    Location:
+      type: object
+      required:
+        - id
+        - location_kind
+      properties:
+        id:
+          $ref: '#/components/schemas/LocationId'
+        location_kind:
+          $ref: '#/components/schemas/LocationKind'
+    LocationConfig:
+      type: object
+      required:
+        - location_id
+        - location_properties
+      properties:
+        location_id:
+          $ref: '#/components/schemas/LocationId'
+        location_properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocationLabel'
+    LocationId:
+      type: string
+    LocationKind:
+      type: string
+    LocationLabel:
+      type: string
+    UnresolvedAlarm:
+      type: object
+    UpdatedAlarm:
+      type: object
+      required:
+        - updated_at
+        - label
+        - message
+        - severity
+        - peak_severity
+      properties:
+        updated_at:
+          type: string
+          format: date-time
+        label:
+          $ref: '#/components/schemas/AlarmLabel'
+        message:
+          $ref: '#/components/schemas/AlarmMessage'
+        severity:
+          $ref: '#/components/schemas/AlarmSeverity'
+        peak_severity:
+          $ref: '#/components/schemas/AlarmSeverity'
+    WebhookAlarms:
+      type: object
+      required:
+        - alarms
+        - devices
+        - locations
+        - device_configs
+        - device_alarms
+        - device_locations
+        - location_configs
+      properties:
+        alarms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Alarm'
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+        device_configs:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceConfig'
+        device_alarms:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceAlarms'
+        device_locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceLocations'
+        location_configs:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocationConfig'
