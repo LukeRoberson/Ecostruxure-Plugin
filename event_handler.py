@@ -354,6 +354,16 @@ class EventHandler:
             if not action_list:
                 return
 
+            # Check if there is a custom chat ID for Teams messages
+            chat_ids = (
+                current_app.config.get('PLUGIN_CONFIG', {}).get('chats', {})
+            )
+            teams_chat = chat_ids.get('default', None)
+            if 'chat' in actions:
+                teams_chat = chat_ids.get(
+                    actions['chat'], None
+                )
+
             # Log to logging service
             system_log = current_app.config['SYSTEM_LOG']
             system_log.log(
@@ -364,4 +374,5 @@ class EventHandler:
                 alert=log['log']['alert'],
                 severity=log['log']['severity'],
                 teams_msg=log['teams']['message'],
+                chat_id=teams_chat,
             )
