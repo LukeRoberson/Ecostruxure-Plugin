@@ -11,6 +11,18 @@
 # - teams: Optional message template for Microsoft Teams notifications. If not provided, the other message will be used.
 
 
+Undervoltage_Activated:
+  description: "Low input voltage, so the battery has to compensate."
+  message: "{self.device_label} has activated an undervoltage alarm: {self.activ_message}."
+
+Undervoltage_Updated:
+  description: "Low input voltage; This event may not have a standalone update message?"
+  message: "{self.event}"
+
+Undervoltage_Cleared:
+  description: "Input voltage has returned to normal, so the battery is no longer compensating."
+  message: "{self.device_label} is {self.updated_message}. Duration: {self.duration}."
+
 ALARM_ACTIVATION_LABEL_Activated:
   description: "A test activation event for EcoStruxure webhooks."
   message: "{self.severity}: {self.device_label} has activated an {self.activ_label} alarm: {self.activ_message}."

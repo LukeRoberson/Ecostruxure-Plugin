@@ -21,6 +21,7 @@ import logging
 import yaml
 import requests
 from flask import current_app
+from datetime import datetime
 
 
 PLUGINS_URL = "http://web-interface:5100/api/plugins"
@@ -180,6 +181,15 @@ class EventHandler:
             self.cleared_at = event.get("cleared_details", {}).get(
                 "cleared_at", ""
             )
+
+            start = datetime.fromisoformat(
+                self.activ_activated_at.replace("Z", "+00:00")
+            )
+            end = datetime.fromisoformat(
+                self.cleared_at.replace("Z", "+00:00")
+            )
+            self.duration = (end - start).total_seconds()
+
         else:
             self.cleared_at = None
 

@@ -4,3 +4,40 @@ chats:
     user: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     default: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
+Undervoltage_Activated:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+Undervoltage_Updated:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+Undervoltage_Cleared:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+
+ALARM_ACTIVATION_LABEL_Activated:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+ALARM_UPDATE_LABEL_Updated:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+ALARM_CLEARED_LABEL_Cleared:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+
+default:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
