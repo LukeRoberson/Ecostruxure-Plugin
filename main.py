@@ -11,8 +11,6 @@ Usage:
     Build the Docker image and run it with the provided Dockerfile.
 
 Functions:
-    - fetch_global_config:
-        Fetches the global configuration from the core service.
     - logging_setup:
         Sets up the root logger for the web service.
     - create_app:
@@ -27,7 +25,6 @@ Routes:
 Dependencies:
     - Flask: For creating the web application.
     - Flask-Session: For session management.
-    - requests: For making HTTP requests to other services.
     - yaml: For loading configuration files.
     - logging: For logging messages to the terminal.
     - os: For environment variable access.
@@ -36,6 +33,7 @@ Custom dependencies:
     - event_handler: Custom module to handle webhook events from Cloudflare.
     - systemlog: Custom module to manage system logs and send them
         to the logging service.
+    - sdk: Custom module to manage configuration and other SDK-related tasks.
 """
 
 # Standard library imports
@@ -48,53 +46,18 @@ from flask import (
 from flask_session import Session
 import yaml
 import logging
-import requests
 import os
 
 # Custom module imports
 from event_handler import EventHandler
 from systemlog import SystemLog
+from sdk import Config
 
 
 CONFIG_URL = "http://core:5100/api/config"
 LOG_URL = "http://logging:5100/api/log"
 PLUGINS_URL = "http://web-interface:5100/api/plugins"
 HASH_URL = "http://security:5100/api/hash"
-
-
-def fetch_global_config(
-    url: str = CONFIG_URL,
-) -> dict:
-    """
-    Fetch the global configuration from the core service.
-
-    Args:
-        url (str): The URL of the core service API endpoint to fetch
-            the global configuration. Defaults to CONFIG_URL.
-
-    Returns:
-        dict: The global configuration loaded from the core service.
-
-    Raises:
-        RuntimeError: If the global configuration cannot be loaded.
-    """
-
-    global_config = None
-    try:
-        response = requests.get(url, timeout=3)
-        response.raise_for_status()
-        global_config = response.json()
-
-    except Exception as e:
-        logging.critical(
-            "Failed to fetch global config from core service."
-            f" Error: {e}"
-        )
-
-    if global_config is None:
-        raise RuntimeError("Could not load global config from core service")
-
-    return global_config['config']
 
 
 def logging_setup(
@@ -123,7 +86,6 @@ def logging_setup(
 
 
 def create_app(
-    config: dict,
     system_log: SystemLog,
     plugin_config: dict,
 ) -> Flask:
@@ -132,7 +94,6 @@ def create_app(
     Registers the necessary blueprints for the web service.
 
     Args:
-        config (dict): The global configuration dictionary
         system_log (SystemLog): An instance of SystemLog for logging.
 
     Returns:
@@ -144,7 +105,6 @@ def create_app(
     app.config['SECRET_KEY'] = os.getenv('api_master_pw')
     app.config['SESSION_TYPE'] = 'filesystem'
     app.config['SESSION_FILE_DIR'] = '/app/flask_session'
-    app.config['GLOBAL_CONFIG'] = config
     app.config['SYSTEM_LOG'] = system_log
     app.config['PLUGIN_CONFIG'] = plugin_config
     Session(app)
@@ -157,7 +117,9 @@ with open('config.yaml', 'r') as f:
     config_data = yaml.safe_load(f)
 
 # Set up the application
-global_config = fetch_global_config()
+global_config = {}
+with Config(CONFIG_URL) as config:
+    global_config = config.read()
 logging_setup(global_config)
 
 # Initialize the SystemLog with default values
@@ -174,7 +136,6 @@ system_log = SystemLog(
 )
 
 app = create_app(
-    config=global_config,
     system_log=system_log,
     plugin_config=config_data,
 )
