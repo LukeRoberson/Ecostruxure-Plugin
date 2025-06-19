@@ -4,6 +4,17 @@ chats:
     user: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     default: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
+Power Failure_Activated:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+Power Failure Cleared_Cleared:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+    
 Undervoltage_Activated:
     web: true
     sql: false
