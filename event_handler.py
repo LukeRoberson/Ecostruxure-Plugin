@@ -148,6 +148,7 @@ class EventHandler:
 
         # Save the event data
         self.event = event
+        self.alert_type = None
 
         # Event activation details
         self.activ_activated_at = event.get("activation_details", {}).get(
@@ -253,6 +254,8 @@ class EventHandler:
             self.alert_type = f"{self.updated_label.replace(' ', '_')}_Updated"
         elif self.status == "cleared" and self.updated_label:
             self.alert_type = f"{self.updated_label.replace(' ', '_')}_Cleared"
+        else:
+            self.alert_type = "Unknown Event"
 
     def _parse_event(
         self,
@@ -270,34 +273,47 @@ class EventHandler:
         message = ""
 
         # Get the handler for the alert type
-        handler = EVENTS.get(self.alert_type, None)
-        if handler is None:
+        if self.alert_type == "Unknown Event":
             logging.error(
-                f"Unhandled alert type: {self.alert_type}. "
+                f"Unknown alert type for event: {self.event}. "
                 "Cannot process event."
             )
-            message = f"Unhandled EcoStruxure event: {self.event}:\n"
+            message = f"Unknown EcoStruxure event:\n{self.event}"
+            self.teams_msg = f"Unknown EcoStruxure event: {self.event}"
+            self.severity = "warning"
+            self.alert_type = "Unknown Event"
+            self.status = "unknown"
 
         else:
-            try:
-                # Get the formatted message
-                message = handler.get(
-                    "message",
-                    self.event
-                ).format(self=self)
-
-                # If there is a Teams message (optional), get it too
-                self.teams_msg = handler.get("teams", None)
-                if self.teams_msg:
-                    self.teams_msg = self.teams_msg.format(self=self)
-
-            except Exception as e:
+            handler = EVENTS.get(self.alert_type, None)
+            if handler is None:
                 logging.error(
-                    f"Error formatting event message for {self.event}:\n{e}"
+                    f"Unhandled alert type: {self.alert_type}. "
+                    "Cannot process event."
                 )
-                message = "No message included"
-                self.teams_msg = str(self.event)
-                self.severity = "warning"
+                message = f"Unhandled EcoStruxure event: {self.event}:\n"
+
+            else:
+                try:
+                    # Get the formatted message
+                    message = handler.get(
+                        "message",
+                        self.event
+                    ).format(self=self)
+
+                    # If there is a Teams message (optional), get it too
+                    self.teams_msg = handler.get("teams", None)
+                    if self.teams_msg:
+                        self.teams_msg = self.teams_msg.format(self=self)
+
+                except Exception as e:
+                    logging.error(
+                        f"Error formatting event message for {self.event}:"
+                        f"\n{e}"
+                    )
+                    message = "No message included"
+                    self.teams_msg = str(self.event)
+                    self.severity = "warning"
 
         log = {
             "source": "EcoStruxure",
