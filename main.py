@@ -31,8 +31,6 @@ Dependencies:
 
 Custom dependencies:
     - event_handler: Custom module to handle webhook events from Cloudflare.
-    - systemlog: Custom module to manage system logs and send them
-        to the logging service.
     - sdk: Custom module to manage configuration and other SDK-related tasks.
 """
 
@@ -50,8 +48,7 @@ import os
 
 # Custom module imports
 from event_handler import EventHandler
-from systemlog import SystemLog
-from sdk import Config
+from sdk import Config, SystemLog
 
 
 CONFIG_URL = "http://core:5100/api/config"
