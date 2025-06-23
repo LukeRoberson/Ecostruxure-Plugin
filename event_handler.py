@@ -24,7 +24,7 @@ from flask import current_app
 from datetime import datetime
 
 
-PLUGINS_URL = "http://web-interface:5100/api/plugins"
+PLUGINS_URL = "http://core:5100/api/plugins"
 BASIC_AUTH_URL = "http://security:5100/api/basic"
 
 
