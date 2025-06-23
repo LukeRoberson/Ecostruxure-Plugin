@@ -156,7 +156,7 @@ class EventHandler:
         )
         self.activ_label = event.get("activation_details", {}).get(
             "label", ""
-        )
+        ).replace(" ", "_")
         self.activ_message = event.get("activation_details", {}).get(
             "message", ""
         )

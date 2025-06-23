@@ -4,23 +4,40 @@ chats:
     user: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     default: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
-Power Failure_Activated:
+Input_Voltage_Or_Frequency_Cannot_Support_Bypass_Activated:
     web: true
     sql: false
     syslog: false
     teams: true
-Power Failure Cleared_Cleared:
+Input_Voltage_Or_Frequency_Cannot_Support_Bypass_Cleared:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+
+Self-Test_in_Progress_Activated:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+Self-Test_in_Progress_Cleared:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+
+Power_Failure_Activated:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+Power_Failure Cleared_Cleared:
     web: true
     sql: false
     syslog: false
     teams: true
     
 Undervoltage_Activated:
-    web: true
-    sql: false
-    syslog: false
-    teams: true
-Undervoltage_Updated:
     web: true
     sql: false
     syslog: false
@@ -32,11 +49,6 @@ Undervoltage_Cleared:
     teams: true
 
 ALARM_ACTIVATION_LABEL_Activated:
-    web: true
-    sql: false
-    syslog: false
-    teams: true
-ALARM_UPDATE_LABEL_Updated:
     web: true
     sql: false
     syslog: false

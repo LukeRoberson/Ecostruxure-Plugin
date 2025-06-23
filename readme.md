@@ -1,6 +1,45 @@
 # Schneider Electric EcoStruxure Plugins
 
 
+# Parsed Fields
+
+The following fields are captured duting parsing, and can be used in event handling. Some come from the webhook directly, some are calculated based on webhook information.
+</br></br>
+
+
+In the _events.yaml_ file, access these using _self._ as the prefix. For example, _{self.event}_.
+
+| Field              | Description                                         |
+| ------------------ | --------------------------------------------------- |
+| event              | The raw event from Ecostruxure                      |
+| activ_activated_at | Event activation timestamp                          |
+| activ_label        | Activation label (spaces replaced with underscores) |
+| activ_message      | Activation message                                  |
+| updated_label      | Updated label                                       |
+| updated_message    | Updated message                                     |
+| updated severity   | Updated severity                                    |
+| cleared_at         | Event cleared timestamp                             |
+| duration           | Calculated duration of the event                    |
+| status             | Calculated: cleared, updated, or activated          |
+| ts                 | Calculated event timestamp                          |
+| severity           | Calculated severity                                 |
+| id                 | Event ID                                            |
+| org_id             | Organization ID                                     |
+| org_name           | Organization name                                   |
+| device_id          | The ID of the device                                |
+| device_label       | The device's label (device name)                    |
+| device_model       | The model of the device                             |
+| device_type        | The type of the device                              |
+| device_ipv4        | A list of IPv4 addresses for the device             |
+| device_ipv6        | A list of IPv6 addresses for the device             |
+| mac_address        | The MAC address of the device                       |
+| location_ancestors | Location information                                |
+</br></br>
+
+
+Note: the _updated_, _cleared_, and _duration_ fields may not be present, depending on the alert.
+</br></br>
+
 
 # Webhooks
 
