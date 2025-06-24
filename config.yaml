@@ -47,6 +47,11 @@ Undervoltage_Cleared:
     sql: false
     syslog: false
     teams: true
+Undervoltage_Cleared_Cleared:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
 
 ALARM_ACTIVATION_LABEL_Activated:
     web: true

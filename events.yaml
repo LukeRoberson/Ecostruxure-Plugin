@@ -44,6 +44,10 @@ Undervoltage_Activated:
 Undervoltage_Cleared:
   description: "Input voltage has returned to normal, so the battery is no longer compensating."
   message: "{self.device_label} is {self.updated_message}. Duration: {self.duration}."
+Undervoltage_Cleared_Cleared:
+  description: "As above, but handling a different label structure."
+  message: "{self.device_label} is {self.updated_message}. Duration: {self.duration}."
+
 
 ALARM_ACTIVATION_LABEL_Activated:
   description: "A test activation event for EcoStruxure webhooks."
