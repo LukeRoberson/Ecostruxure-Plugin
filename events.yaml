@@ -16,31 +16,33 @@
 Input_Voltage_Or_Frequency_Cannot_Support_Bypass_Activated:
   description: "The incoming power's voltage or frequency is outside the acceptable range for the UPS to safely switch to bypass mode"
   message: "{self.device_label} has reported {self.activ_message}"
-
 Input_Voltage_Or_Frequency_Cannot_Support_Bypass_Cleared:
   description: "The incoming power's voltage or frequency is outside the acceptable range for the UPS to safely switch to bypass mode"
   message: "{self.device_label} says that {self.activ_message}"
 
+
 Self-Test_in_Progress_Activated:
   description: "A UPS has started a self-test"
   message: "{self.device_label} has started a battery self-test."
-
 Self-Test_in_Progress_Cleared:
   description: "A UPS has completed a self-test"
   message: "{self.device_label} has completed its battery self-test."
 
+
 Power_Failure_Activated:
   description: "A power failure has occurred, and the battery is now compensating."
   message: "{self.device_label} has experienced a power failure: {self.activ_message}."
-
-Power_Failure Cleared_Cleared:
+Power_Failure_Cleared:
   description: "Power has been restored, so the battery is no longer compensating."
   message: "{self.device_label} is {self.updated_message}. Duration: {self.duration}."
+Power_Failure_Cleared_Cleared:
+  description: "As above, with a different labeling structure."
+  message: "{self.device_label} is {self.updated_message}. Duration: {self.duration}."
+
 
 Undervoltage_Activated:
   description: "Low input voltage, so the battery has to compensate."
   message: "{self.device_label} has activated an undervoltage alarm: {self.activ_message}."
-
 Undervoltage_Cleared:
   description: "Input voltage has returned to normal, so the battery is no longer compensating."
   message: "{self.device_label} is {self.updated_message}. Duration: {self.duration}."
@@ -52,10 +54,10 @@ Undervoltage_Cleared_Cleared:
 ALARM_ACTIVATION_LABEL_Activated:
   description: "A test activation event for EcoStruxure webhooks."
   message: "{self.severity}: {self.device_label} has activated an {self.activ_label} alarm: {self.activ_message}."
-
 ALARM_CLEARED_LABEL_Cleared:
   description: "A test clear event for EcoStruxure webhooks."
   message: "{self.device_label} has cleared an alarm: {self.activ_label}."
+
 
 default:
   description: "A default event for EcoStruxure webhooks."

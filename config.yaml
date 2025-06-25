@@ -31,7 +31,7 @@ Power_Failure_Activated:
     sql: false
     syslog: false
     teams: true
-Power_Failure Cleared_Cleared:
+Power_Failure_Cleared_Cleared:
     web: true
     sql: false
     syslog: false
