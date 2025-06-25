@@ -13,6 +13,22 @@
 #   The events below need to include underscores where spaces are present in the activation label.
 
 
+Device_Communication_Alert_Activated:
+  descrpition: "Ecostruxure cloud can't communicate with the device."
+  message: "Ecostruxure cloud has lost communication with {self.device_label}."
+Device_Communication_Alert_Cleared:
+  descrpition: "Communication from cloud to device has been restored."
+  message: "Communication event: {self.event}"
+  teams: "Not handled yet: {self.event}"
+
+Low_Battery_Activated:
+  description: "The battery charge level is low."
+  message: "{self.device_label} has reported a low battery. {self.activ_message}"
+Low_Battery_Cleared:
+  description: "The battery charge level has returned to a better level."
+  message: "Battery charge level event: {self.event}"
+  teams: "Not handled yet: {self.event}"
+
 Input_Voltage_Or_Frequency_Cannot_Support_Bypass_Activated:
   description: "The incoming power's voltage or frequency is outside the acceptable range for the UPS to safely switch to bypass mode"
   message: "{self.device_label} has reported {self.activ_message}"

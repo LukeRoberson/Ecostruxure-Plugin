@@ -58,6 +58,7 @@ class EventHandler:
 
         self.config = config
         self.plugin_name = config['name']
+        self.default_chat = config.get('chats', {}).get('default', None)
 
     def __enter__(
         self
@@ -360,8 +361,6 @@ class EventHandler:
         for entry in event:
             self._extract_fields(entry)
             log = self._parse_event()
-
-            print(log, "\n")
 
             # Get the actions to perform
             if self.alert_type in self.config:
