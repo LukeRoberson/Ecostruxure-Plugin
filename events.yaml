@@ -37,6 +37,15 @@ Input_Voltage_Or_Frequency_Cannot_Support_Bypass_Cleared:
   description: "The incoming power's voltage or frequency is outside the acceptable range for the UPS to safely switch to bypass mode"
   message: "{self.device_label} says that {self.activ_message}"
 
+Input_Voltage_Or_Frequency_Can_Now_Support_Bypass:
+  description: "Bypass is now supported"
+  message: "{self.device_label} says that {self.activ_message}"
+Input_Voltage_Or_Frequency_Can_Now_Support_Bypass_Activated:
+  description: "Bypass is now supported"
+  message: "{self.device_label} says that {self.activ_message}"
+Input_Voltage_Or_Frequency_Can_Now_Support_Bypass_Cleared:
+  description: "Bypass is now supported"
+  message: "{self.device_label} says that {self.activ_message}"
 
 Self-Test_in_Progress_Activated:
   description: "A UPS has started a self-test"

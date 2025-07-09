@@ -1,15 +1,58 @@
-name: "EcoStruxure"
+name: "ecostruxure"
 
 chats:
-    user: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-    default: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    default: xxxxxxxxxxxxxxxxxx
+    custom: xxxxxxxxxxxxxxxxxxx
 
+Device_Communication_Alert_Activated:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+Device_Communication_Alert_Cleared:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+
+Low_Battery_Activated:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+Low_Battery_Cleared_Cleared:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+
+Input_Voltage_Or_Frequency_Cannot_Support_Bypass:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
 Input_Voltage_Or_Frequency_Cannot_Support_Bypass_Activated:
     web: true
     sql: false
     syslog: false
     teams: true
 Input_Voltage_Or_Frequency_Cannot_Support_Bypass_Cleared:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+
+Input_Voltage_Or_Frequency_Can_Now_Support_Bypass:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+Input_Voltage_Or_Frequency_Can_Now_Support_Bypass_Activated:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+Input_Voltage_Or_Frequency_Can_Now_Support_Bypass_Cleared:
     web: true
     sql: false
     syslog: false
@@ -31,12 +74,17 @@ Power_Failure_Activated:
     sql: false
     syslog: false
     teams: true
+Power_Failure_Cleared:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
 Power_Failure_Cleared_Cleared:
     web: true
     sql: false
     syslog: false
     teams: true
-    
+
 Undervoltage_Activated:
     web: true
     sql: false
