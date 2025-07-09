@@ -293,6 +293,10 @@ class EventHandler:
                     "Cannot process event."
                 )
                 message = f"Unhandled EcoStruxure event: {self.event}:\n"
+                if self.status:
+                    message += f"Status: {self.status}\n"
+                if self.alert_type:
+                    message += f"Alert Type: {self.alert_type}\n"
 
             else:
                 try:

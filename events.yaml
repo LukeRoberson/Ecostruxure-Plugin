@@ -27,6 +27,9 @@ Low_Battery_Cleared_Cleared:
   description: "The battery charge level has returned to a better level."
   message: "Battery charge for {self.device_label} is back to a normal level."
 
+Input_Voltage_Or_Frequency_Cannot_Support_Bypass:
+  description: "The incoming power's voltage or frequency is outside the acceptable range for the UPS to safely switch to bypass mode"
+  message: "{self.device_label} has reported {self.activ_message}"
 Input_Voltage_Or_Frequency_Cannot_Support_Bypass_Activated:
   description: "The incoming power's voltage or frequency is outside the acceptable range for the UPS to safely switch to bypass mode"
   message: "{self.device_label} has reported {self.activ_message}"
