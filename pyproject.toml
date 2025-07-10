@@ -1,0 +1,9 @@
+[tool.project-metadata]
+name = "Ecostruxure Plugin"
+description = "A plugin for the AI assistant app, enhancing it with APC Ecostruxure capabilities."
+version = "1.0.1"
+
+[tool.versioning]
+major = 1
+minor = 0
+patch = 1
