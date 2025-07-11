@@ -13,11 +13,25 @@
 #   The events below need to include underscores where spaces are present in the activation label.
 
 
+Self-Test_in_Progress_Activated:
+  description: "A battery self-test has started"
+  message: "{self.device_label} has started a battery self-test."
+Self-Test_in_Progress_Cleared:
+  description: "A battery self-test has completed"
+  message: "{self.device_label} has completed its battery self-test."
+
+Overvoltage_Activated:
+  description: "Input voltage is too high, so the UPS has to compensate."
+  message: "{self.device_label} is compensating for a high input voltage: {self.activ_message}."
+Overvoltage_Cleared:
+  description: "Input voltage has returned to normal, so the UPS is no longer compensating."
+  message: "{self.device_label} is {self.updated_message}. Duration: {self.duration}."
+
 Device_Communication_Alert_Activated:
-  descrpition: "Ecostruxure cloud can't communicate with the device."
+  description: "Ecostruxure cloud can't communicate with the device."
   message: "Ecostruxure cloud has lost communication with {self.device_label}."
 Device_Communication_Alert_Cleared:
-  descrpition: "Communication from cloud to device has been restored."
+  description: "Communication from cloud to device has been restored."
   message: "Communication from cloud to {self.device_label} has been restored."
 
 Low_Battery_Activated:

@@ -4,6 +4,28 @@ chats:
     default: xxxxxxxxxxxxxxxxxx
     custom: xxxxxxxxxxxxxxxxxxx
 
+Self-Test_in_Progress_Activated:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+Self-Test_in_Progress_Cleared:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+
+Compensating for a high input voltage._Activated:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+Compensating for a high input voltage._Cleared:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+
 Device_Communication_Alert_Activated:
     web: true
     sql: false
