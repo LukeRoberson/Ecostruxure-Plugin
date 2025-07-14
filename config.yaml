@@ -1,8 +1,8 @@
 name: "ecostruxure"
 
 chats:
-    default: xxxxxxxxxxxxxxxxxx
-    custom: xxxxxxxxxxxxxxxxxxx
+    default: xxxxxxxxxxxxxxxxxxxxxxx
+    custom: xxxxxxxxxxxxxxxxxxxxxxx
 
 Self-Test_in_Progress_Activated:
     web: true
@@ -14,13 +14,23 @@ Self-Test_in_Progress_Cleared:
     sql: false
     syslog: false
     teams: true
-
-Compensating for a high input voltage._Activated:
+Self-Test_Cleared_Cleared:
     web: true
     sql: false
     syslog: false
     teams: true
-Compensating for a high input voltage._Cleared:
+
+Overvoltage_Activated:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+Overvoltage_Cleared:
+    web: true
+    sql: false
+    syslog: false
+    teams: true
+Overvoltage_Cleared_Cleared:
     web: true
     sql: false
     syslog: false

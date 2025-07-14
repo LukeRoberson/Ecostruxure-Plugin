@@ -19,11 +19,17 @@ Self-Test_in_Progress_Activated:
 Self-Test_in_Progress_Cleared:
   description: "A battery self-test has completed"
   message: "{self.device_label} has completed its battery self-test."
+Self-Test_Cleared_Cleared:
+  description: "A battery self-test has completed"
+  message: "{self.device_label} has completed its battery self-test."
 
 Overvoltage_Activated:
   description: "Input voltage is too high, so the UPS has to compensate."
   message: "{self.device_label} is compensating for a high input voltage: {self.activ_message}."
 Overvoltage_Cleared:
+  description: "Input voltage has returned to normal, so the UPS is no longer compensating."
+  message: "{self.device_label} is {self.updated_message}. Duration: {self.duration}."
+Overvoltage_Cleared_Cleared:
   description: "Input voltage has returned to normal, so the UPS is no longer compensating."
   message: "{self.device_label} is {self.updated_message}. Duration: {self.duration}."
 
