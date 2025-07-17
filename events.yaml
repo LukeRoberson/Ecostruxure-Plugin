@@ -78,6 +78,9 @@ Self-Test_in_Progress_Cleared:
 Power_Failure_Activated:
   description: "A power failure has occurred, and the battery is now compensating."
   message: "{self.device_label} has experienced a power failure: {self.activ_message}."
+Power_Failure_Updated:
+  description: "An update to an existing power failure event."
+  message: "{self.device_label} has provided an update regarding the power failure: {self.updated_message}."
 Power_Failure_Cleared:
   description: "Power has been restored, so the battery is no longer compensating."
   message: "{self.device_label} is {self.updated_message}. Duration: {self.duration}."

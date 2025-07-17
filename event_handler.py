@@ -255,6 +255,9 @@ class EventHandler:
             self.alert_type = f"{self.updated_label.replace(' ', '_')}_Updated"
         elif self.status == "cleared" and self.updated_label:
             self.alert_type = f"{self.updated_label.replace(' ', '_')}_Cleared"
+        elif self.status == "cleared" and self.activ_label:
+            self.updated_label = f'{self.activ_label}'
+            self.alert_type = f"{self.updated_label.replace(' ', '_')}_Cleared"
         else:
             self.alert_type = "Unknown Event"
 
