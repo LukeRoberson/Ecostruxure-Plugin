@@ -26,6 +26,9 @@ Self-Test_Cleared_Cleared:
 Overvoltage_Activated:
   description: "Input voltage is too high, so the UPS has to compensate."
   message: "{self.device_label} is compensating for a high input voltage: {self.activ_message}."
+Overvoltage_Updated:
+  description: "An update to an existing overvoltage event."
+  message: "{self.device_label} has provided an update regarding the overvoltage: {self.updated_message}."
 Overvoltage_Cleared:
   description: "Input voltage has returned to normal, so the UPS is no longer compensating."
   message: "{self.device_label} is {self.updated_message}. Duration: {self.duration}."
