@@ -13,6 +13,16 @@
 #   The events below need to include underscores where spaces are present in the activation label.
 
 
+Discharged_Battery_Activated:
+  description: "A battery has discharged below a critical level."
+  message: "{self.device_label} has reported a discharged battery: {self.activ_message}."
+Discharged_Battery_Updated:
+  description: "An update to an existing discharged battery event."
+  message: "{self.device_label} has provided an update regarding the discharged battery: {self.updated_message}."
+Discharged_Battery_Cleared_Cleared:
+  description: "A discharged battery has returned to a normal level."
+  message: "{self.device_label} is {self.updated_message}. Duration: {self.duration}."
+
 Self-Test_in_Progress_Activated:
   description: "A battery self-test has started"
   message: "{self.device_label} has started a battery self-test."
