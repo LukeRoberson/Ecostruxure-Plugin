@@ -66,6 +66,9 @@ Input_Voltage_Or_Frequency_Cannot_Support_Bypass:
 Input_Voltage_Or_Frequency_Cannot_Support_Bypass_Activated:
   description: "The incoming power's voltage or frequency is outside the acceptable range for the UPS to safely switch to bypass mode"
   message: "{self.device_label} has reported {self.activ_message}"
+Input_Voltage_Or_Frequency_Cannot_Support_Bypass_Updated:
+  description: "The incoming power's voltage or frequency is outside the acceptable range for the UPS to safely switch to bypass mode"
+  message: "{self.device_label} has reported {self.updated_message}"
 Input_Voltage_Or_Frequency_Cannot_Support_Bypass_Cleared:
   description: "The incoming power's voltage or frequency is outside the acceptable range for the UPS to safely switch to bypass mode"
   message: "{self.device_label} says that {self.activ_message}"
@@ -105,6 +108,9 @@ Power_Failure_Cleared_Cleared:
 Undervoltage_Activated:
   description: "Low input voltage, so the battery has to compensate."
   message: "{self.device_label} has activated an undervoltage alarm: {self.activ_message}."
+Undervoltage_Updated:
+  description: "Low input voltage, so the battery has to compensate."
+  message: "{self.device_label} has activated an undervoltage alarm: {self.updated_message}."
 Undervoltage_Cleared:
   description: "Input voltage has returned to normal, so the battery is no longer compensating."
   message: "{self.device_label} is {self.updated_message}. Duration: {self.duration}."
