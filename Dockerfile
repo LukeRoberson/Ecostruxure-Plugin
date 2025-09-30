@@ -13,8 +13,10 @@ LABEL net.networkdirection.healthz="http://localhost:5100/api/health"
 LABEL net.networkdirection.plugin.name="ecostruxure"
 
 # Copy the requirements file and install dependencies
-COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
+COPY pyproject.toml ./
+
+# Install dependencies
+RUN pip install --upgrade pip && pip install .
 
 # Copy the rest of the application code
 COPY . .
