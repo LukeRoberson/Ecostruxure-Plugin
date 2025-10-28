@@ -13,6 +13,16 @@
 #   The events below need to include underscores where spaces are present in the activation label.
 
 
+Battery_general_error_Activated:
+  description: "A general battery error has occurred."
+  message: "{self.device_label} has reported a general battery error: {self.activ_message}."
+Battery_general_error_Updated:
+  description: "An update to an existing general battery error event."
+  message: "{self.device_label} has provided an update regarding the general battery error: {self.updated_message}."
+Battery_general_error__Cleared:
+  description: "A general battery error has been resolved."
+  message: "{self.device_label} is {self.updated_message}. Duration: {self.duration}."
+
 Discharged_Battery_Activated:
   description: "A battery has discharged below a critical level."
   message: "{self.device_label} has reported a discharged battery: {self.activ_message}."
